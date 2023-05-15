@@ -1,15 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Link } from './types';
 
 @Component({
   selector: 'lib-ui-kit-lib',
-  template: `
-    <p>
-      ui-kit-lib works!
-    </p>
-  `,
-  styles: [
-  ]
+  template: `<lib-navbar [links]="links"></lib-navbar>`,
 })
 export class UiKitLibComponent {
-
+  @Output() pathChange = new EventEmitter()
+  @Input() links: Link[] = []
 }

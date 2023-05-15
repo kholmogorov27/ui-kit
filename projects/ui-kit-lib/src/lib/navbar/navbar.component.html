@@ -1,0 +1,6 @@
+<nav>
+  <a *ngFor="let link of links" [routerLink]="link.path" [class.active]="getIsActive(link.path)">
+    <fa-icon *ngIf="link.icon" [icon]="link.icon"></fa-icon>
+    {{ link.name }}
+  </a>
+</nav>

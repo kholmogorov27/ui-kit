@@ -1,0 +1,10 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  margin-top: 50px;
+}
+
+.navbar {
+  padding: 50px 10px;
+}

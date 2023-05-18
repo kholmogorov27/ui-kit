@@ -19,7 +19,7 @@
   overflow: auto;
 
   row-gap: 1px;
-  padding: 1px 0;
+  padding-bottom: 1px;
 
   width: 100%;
   background-color: #ebecef;
@@ -42,12 +42,15 @@
 }
 
 .cell.header {
+  position: sticky;
+  top: 0;
   text-align: left;
   font-weight: normal;
   background-color: #f8f8fa;
   padding: 10px 8px;
   color: #737680;
   font-weight: 500;
+  border-top: 1px solid #ebecef;
 }
 
 .cell.checkbox {
@@ -153,6 +156,6 @@ select {
   gap: 20px;
 }
 
-.remove-button {
+.clickable {
   cursor: pointer;
 }

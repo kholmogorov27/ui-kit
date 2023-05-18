@@ -21,6 +21,10 @@ import {
 export class AppComponent {
   title = 'ui-kit-test';
 
+  onItemClick(item: any) {
+    console.log(item);
+  }
+
   links = LINKS;
   categories = CATEGORIES;
   items = ITEMS;

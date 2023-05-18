@@ -2,7 +2,11 @@
   <div class="view">
     <!-- <lib-navbar [links]="links"></lib-navbar> -->
     <app-content>
-      <lib-table [categories]="categories" [items]="items"></lib-table>
+      <lib-table
+        [categories]="categories"
+        [items]="items"
+        (itemClick)="onItemClick($event)"
+      ></lib-table>
     </app-content>
   </div>
   <!-- <router-outlet></router-outlet> -->

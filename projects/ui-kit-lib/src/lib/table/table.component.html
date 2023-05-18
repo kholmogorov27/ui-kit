@@ -31,12 +31,12 @@
     </div>
     <ng-container *ngFor="let item of itemsOnPage; let index = index">
       <div
-        class="cell"
+        class="cell clickable"
         [class.checkbox]="isFirst"
         [ngStyle]="{ '--aligment': category.aligment }"
         [tabindex]="isFirst ? 0 : -1"
-        (click)="onItemClick($event, item)"
-        (keydown)="onItemClick($event, item)"
+        (click)="onItemClick($event, item, index)"
+        (keydown)="onItemClick($event, item, index)"
         *ngFor="let category of sortedCategories; first as isFirst"
       >
         <span class="cell-content">
@@ -60,7 +60,7 @@
         Количество выбранных позиций: {{ getSelectedAmount }}
       </div>
       <div
-        class="remove-button"
+        class="remove-button clickable"
         tabindex="0"
         (keydown)="$event.key === 'Enter' && removeSelectedItems()"
         (click)="removeSelectedItems()"

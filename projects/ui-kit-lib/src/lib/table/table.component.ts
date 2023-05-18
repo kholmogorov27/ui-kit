@@ -72,9 +72,6 @@ export class TableComponent implements OnChanges {
   get isAnythingOnPageSelected(): boolean {
     return this.indexesOnPage.some((index) => this.selected.includes(index));
   }
-  isItemChecked(indexOnPage: number): boolean {
-    return this.selected.includes(this.indexesOnPage[indexOnPage]);
-  }
 
   private sortCategories = (categories: TableCategory[]): TableCategory[] => {
     const clone = copyObj(categories) as TableCategory[];
@@ -108,17 +105,22 @@ export class TableComponent implements OnChanges {
     }
   }
 
-  onItemClick(event: MouseEvent | KeyboardEvent, item: TableItem): void {
-    if (event instanceof KeyboardEvent && event.key !== 'Enter') {
+  onItemClick(
+    event: MouseEvent | KeyboardEvent,
+    item: TableItem,
+    index: number
+  ): void {
+    if (
+      (event instanceof KeyboardEvent && event.key !== 'Enter') ||
+      (event.target as HTMLElement)?.tagName === 'INPUT'
+    ) {
       return;
     }
 
-    this.itemClick.emit(item);
-    console.log('item click event');
+    this.itemClick.emit({ item, index: this.getGlobalIndex(index) });
   }
 
   onAddItem(): void {
-    console.log('item add event');
     this.itemAdd.emit();
   }
 
@@ -151,7 +153,7 @@ export class TableComponent implements OnChanges {
   }
 
   toggleCheckbox(checked: boolean, indexOnPage: number): void {
-    this.toggleSelected(this.indexesOnPage[indexOnPage]);
+    this.toggleSelected(this.getGlobalIndex(indexOnPage));
   }
 
   toggleAllCheckbox(flag: boolean): void {
@@ -181,6 +183,14 @@ export class TableComponent implements OnChanges {
 
     this.toggleAllCheckbox(false);
     this.validatePagination();
+  }
+
+  getGlobalIndex(indexOnPage: number): number {
+    return this.indexesOnPage[indexOnPage];
+  }
+
+  isItemChecked(indexOnPage: number): boolean {
+    return this.selected.includes(this.getGlobalIndex(indexOnPage));
   }
 
   sortedCategories: TableCategory[] = this.sortCategories(this.categories);

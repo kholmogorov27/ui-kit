@@ -1,5 +1,10 @@
 <div class="container">
-  <div class="crossIcon" tabindex="0" (keydown)="$event.key === 'Enter' && handleClose()" (click)="handleClose()">
+  <div
+    class="crossIcon"
+    tabindex="0"
+    (keydown)="$event.key === 'Enter' && handleClose()"
+    (click)="handleClose()"
+  >
     <fa-icon [icon]="crossIcon"></fa-icon>
   </div>
   <ng-content></ng-content>

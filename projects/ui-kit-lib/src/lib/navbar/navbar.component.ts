@@ -6,26 +6,24 @@ import { filter } from 'rxjs';
 @Component({
   selector: 'lib-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-  
-  currentPath = ''
+  currentPath = '';
 
-  @Input() links: Link[] = []
-  @Output() pathChange = new EventEmitter()
+  @Input() links: Link[] = [];
+  @Output() pathChange = new EventEmitter();
 
-  constructor(
-    private router: Router
-  ) {}
+  constructor(private router: Router) {}
 
-  getIsActive = (path: string) => this.currentPath === path
+  getIsActive = (path: string) => this.currentPath === path;
 
   ngOnInit() {
-    this.router.events.pipe(filter(event => event instanceof NavigationEnd))
-    .subscribe((value) => {
-      this.currentPath = (value as NavigationEnd).url.slice(1)
-      this.pathChange.emit(this.currentPath)
-    })
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe((value) => {
+        this.currentPath = (value as NavigationEnd).url.slice(1);
+        this.pathChange.emit(this.currentPath);
+      });
   }
 }

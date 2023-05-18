@@ -17,16 +17,7 @@ import { PopUpComponent } from './pop-up/pop-up.component';
     ButtonComponent,
     PopUpComponent,
   ],
-  imports: [
-    BrowserModule,
-    RouterModule,
-    FontAwesomeModule,
-    FormsModule
-  ],
-  exports: [
-    UiKitLibComponent,
-    NavbarComponent,
-    TableComponent,
-  ]
+  imports: [BrowserModule, RouterModule, FontAwesomeModule, FormsModule],
+  exports: [UiKitLibComponent, NavbarComponent, TableComponent],
 })
-export class UiKitLibModule { }
+export class UiKitLibModule {}

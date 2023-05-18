@@ -3,6 +3,7 @@
 }
 
 .container {
+  width: 100%;
   height: -webkit-fill-available;
   display: flex;
   flex-wrap: nowrap;
@@ -19,13 +20,13 @@
 
   row-gap: 1px;
   padding: 1px 0;
-  
+
   width: 100%;
-  background-color: #EBECEF;
+  background-color: #ebecef;
 
   --columnsAmount: 6;
   --rowsAmount: 10;
-  --aligment: 'left';
+  --aligment: "left";
 }
 
 .cell {
@@ -35,7 +36,7 @@
   justify-content: var(--aligment);
   background-color: white;
   color: #434652;
-  overflow: hidden; 
+  overflow: hidden;
 
   padding: 0 8px;
 }
@@ -43,20 +44,20 @@
 .cell.header {
   text-align: left;
   font-weight: normal;
-  background-color: #F8F8FA;
+  background-color: #f8f8fa;
   padding: 10px 8px;
   color: #737680;
   font-weight: 500;
 }
 
 .cell.checkbox {
-  --aligment: 'center';
+  --aligment: "center";
 }
 
 .cell.checkbox input {
   width: 16px;
   aspect-ratio: 1;
-  border: 1px solid #D0D3DA;
+  border: 1px solid #d0d3da;
   border-radius: 2px;
   cursor: pointer;
   -moz-appearance: none;
@@ -65,22 +66,22 @@
   appearance: none;
 }
 .cell.checkbox input:checked {
-  border-color: #C06ECC;
-  background: #C06ECC;
+  border-color: #c06ecc;
+  background: #c06ecc;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
   background-size: 70%;
   background-position: center center;
   background-repeat: no-repeat;
 }
 
-.cell-content {  
-  text-overflow: ellipsis; 
-  overflow: hidden; 
+.cell-content {
+  text-overflow: ellipsis;
+  overflow: hidden;
   white-space: pre;
 }
 
 button.small {
-  background: #F8F8FA;
+  background: #f8f8fa;
   box-sizing: border-box;
   display: inline-flex;
   flex-direction: row;
@@ -88,11 +89,11 @@ button.small {
   align-items: center;
   padding: 4px 8px;
   gap: 8px;
-  border: 1px solid #D0D3DA;
+  border: 1px solid #d0d3da;
   border-radius: 4px;
   color: #737680;
   cursor: pointer;
-  
+
   height: 32px;
   aspect-ratio: 1;
 }
@@ -115,22 +116,23 @@ button.small {
   border-radius: 0 4px 4px 0;
 }
 
-.navigation input, select {
+.navigation input,
+select {
   height: 32px;
   box-sizing: border-box;
 
   text-align: center;
   padding: 0 5px;
 
-  background: #FFFFFF;
-  border: 1px solid #D8DAE0;
+  background: #ffffff;
+  border: 1px solid #d8dae0;
   border-radius: 4px;
   font-weight: 400;
   font-size: 14px;
 }
 
-.navigation input[type='number'] {
-  -moz-appearance:textfield;
+.navigation input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 .navigation input::-webkit-outer-spin-button,

@@ -5,7 +5,7 @@
   padding: 16px 64px;
   gap: 24px;
 
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0 4px 8px #4c5d704d, 0 0 1px #4c5d704d;
   border-radius: 8px;
   position: absolute;
@@ -24,6 +24,6 @@
   right: 0;
   margin: 5px 10px;
   color: black;
-  font-size: .9em;
+  font-size: 0.9em;
   cursor: pointer;
 }

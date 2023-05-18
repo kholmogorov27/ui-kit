@@ -4,19 +4,16 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-content',
   templateUrl: './content.component.html',
-  styleUrls: ['./content.component.css']
+  styleUrls: ['./content.component.css'],
 })
 export class ContentComponent implements OnInit {
+  currentPath = '';
 
-  currentPath = ''
-
-  constructor(
-    private route: ActivatedRoute
-  ) {}
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.route.url.subscribe(url => {
-      this.currentPath = url[0].path
-    })
+    this.route.url.subscribe((url) => {
+      this.currentPath = url[0].path;
+    });
   }
 }

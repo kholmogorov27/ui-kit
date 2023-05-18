@@ -8,17 +8,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ContentComponent } from './content/content.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ContentComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FontAwesomeModule,
-    UiKitLibModule
-  ],
+  declarations: [AppComponent, ContentComponent],
+  imports: [BrowserModule, AppRoutingModule, FontAwesomeModule, UiKitLibModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -2,9 +2,10 @@
   display: flex;
   justify-content: center;
   align-items: stretch;
-  margin-top: 50px;
+  /* margin-top: 50px; */
 }
 
-.navbar {
-  padding: 50px 10px;
+.view {
+  /* padding: 50px 10px; */
+  height: 100vh;
 }

@@ -1,1 +1,91 @@
-<p>table works!</p>
+<div class="container">
+  <ng-container *ngTemplateOutlet="navigation"></ng-container>
+  
+  <lib-button (press)="handleAddItem($event)">Добавить акцию</lib-button>
+  
+  <div class="table-container" [ngStyle]="{'--columnsAmount': sortedCategories.length, '--rowsAmount': itemsOnPage.length + 1}">
+    <div class="cell header" *ngFor="let category of sortedCategories; first as isFirst" [class.checkbox]="isFirst">
+      <span class="cell-content">
+        <ng-container
+          [ngTemplateOutlet]="!isFirst ? text : checkbox"
+          [ngTemplateOutletContext]="!isFirst ? {content: category.name} : {checked: isAnythingOnPageSelected, change: toggleAllCheckboxOnPage}"
+        ></ng-container>
+      </span>
+    </div>
+    <ng-container *ngFor="let item of itemsOnPage; let index = index">
+      <div 
+        class="cell" 
+        [class.checkbox]="isFirst" 
+        [ngStyle]="{'--aligment': category.aligment}"
+        [tabindex]="isFirst ? 0 : -1"
+        (click)="handleItemClick($event, item)"
+        (keydown)="handleItemClick($event, item)"
+        *ngFor="let category of sortedCategories; first as isFirst"> 
+        <span class="cell-content">
+          <ng-container
+            [ngTemplateOutlet]="!isFirst ? text : checkbox"
+            [ngTemplateOutletContext]="!isFirst 
+              ? {content: item?.[category.key]} 
+              : {index: index, checked: isItemChecked(index), change: toggleCheckbox}"
+          ></ng-container>
+        </span>
+      </div>
+    </ng-container>
+  </div>
+
+  <lib-pop-up *ngIf="isAnythingSelected" (popupClose)="toggleAllCheckbox(false)">
+    <div class="popup-container">
+      <div [ngStyle]="{'white-space': 'pre'}">
+        Количество выбранных позиций: {{ getSelectedAmount }}
+      </div>
+      <div class="remove-button" tabindex="0" (keydown)="$event.key === 'Enter' && removeSelectedItems()" (click)="removeSelectedItems()">
+        <fa-icon [icon]="trashIcon"></fa-icon> Удалить
+      </div>
+    </div>
+  </lib-pop-up>
+
+</div>
+
+<ng-template #checkbox let-index="index" let-checked="checked" let-change="change">
+  <input type="checkbox" [checked]="checked" (change)="change.call(this, checked, index)">
+</ng-template>
+<ng-template #text let-content="content">
+  {{ content }}
+</ng-template>
+
+<ng-template #navigation>
+  <div class="navigation">
+
+    <div class="property">
+      <span class="description">Показывать</span>
+      <select #perPageInput [value]="perPage" (change)="changePerPage(perPageInput.value)">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="30">30</option>
+        <option value="50">50</option>
+      </select>
+    </div>
+
+    <div class="property">
+      <span class="description">Страница</span>
+      <input 
+        #pageInput 
+        type="number" 
+        min="1"
+        [max]="pagesAmount"
+        [value]="currentPage" 
+        [ngStyle]="{width: '4.5ch'}" 
+        (change)="changePage(pageInput.value)">
+      <span class="disabled"> из {{ pagesAmount }}</span>
+    </div>
+
+    <div class="buttons">
+      <button class="small left" [class.disabled]="isFirstPage" (click)="prevPage()">
+        <fa-icon [icon]="leftArrowIcon"></fa-icon>
+      </button>
+      <button class="small right" [class.disabled]="isLastPage" (click)="nextPage()">
+        <fa-icon [icon]="rightArrowIcon"></fa-icon>
+      </button>
+    </div>
+  </div>
+</ng-template>

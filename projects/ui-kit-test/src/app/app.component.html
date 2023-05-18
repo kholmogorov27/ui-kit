@@ -1,6 +1,9 @@
 <div class="container">
-  <div class="navbar">
-    <lib-navbar [links]="links"></lib-navbar>
+  <div class="view">
+    <!-- <lib-navbar [links]="links"></lib-navbar> -->
+    <app-content>
+      <lib-table [categories]="categories" [items]="items"></lib-table>
+    </app-content>
   </div>
-  <router-outlet></router-outlet>
+  <!-- <router-outlet></router-outlet> -->
 </div>

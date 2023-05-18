@@ -1,7 +1,10 @@
 div {
+  position: relative;
+  height: -webkit-fill-available;
+  margin: 20px;
   min-width: 50vw;
+  max-width: 80vw;
   box-sizing: border-box;
-  height: 100%;
 
   display: flex;
   flex-direction: column;
@@ -9,8 +12,7 @@ div {
   justify-content: center;
   padding: 24px;
   gap: 24px;
-  font-size: 3em;
-
+  
   background: #FFFFFF;
 
   box-shadow: -5px 1px 15px rgba(0, 0, 0, 0.05);

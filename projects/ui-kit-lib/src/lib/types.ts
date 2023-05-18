@@ -5,3 +5,14 @@ export type Link = {
   path: string,
   icon?: IconDefinition
 }
+
+export type TableCategory = {
+  key: string,
+  name: string,
+  aligment?: 'left' | 'center' | 'right',
+  position?: number
+}
+
+export type TableItem = {
+  [key: string]: string
+}

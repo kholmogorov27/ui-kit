@@ -44,7 +44,6 @@
 .cell.header {
   position: sticky;
   top: 0;
-  text-align: left;
   font-weight: normal;
   background-color: #f8f8fa;
   padding: 10px 8px;
@@ -54,7 +53,7 @@
 }
 
 .cell.checkbox {
-  --aligment: "center";
+  --aligment: center;
 }
 
 .cell.checkbox input {

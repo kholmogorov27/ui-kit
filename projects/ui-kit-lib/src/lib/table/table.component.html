@@ -12,8 +12,9 @@
   >
     <div
       class="cell header"
-      *ngFor="let category of sortedCategories; first as isFirst"
       [class.checkbox]="isFirst"
+      [ngStyle]="{ '--aligment': category.aligment }"
+      *ngFor="let category of sortedCategories; first as isFirst"
     >
       <span class="cell-content">
         <ng-container

@@ -7,7 +7,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { TableComponent } from './table/table.component';
 import { ButtonComponent } from './button/button.component';
 import { FormsModule } from '@angular/forms';
-import { PopUpComponent } from './pop-up/pop-up.component';
+import { PopUpComponent } from './table/pop-up/pop-up.component';
 
 @NgModule({
   declarations: [

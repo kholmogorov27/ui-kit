@@ -16,3 +16,10 @@ export type TableCategory = {
 export type TableItem = {
   [key: string]: string;
 };
+
+export type ModalOptions = {
+  applyButton?: string;
+  cancelButton?: string;
+  closeOnEscape?: boolean;
+  closeOnClickAway?: boolean;
+};

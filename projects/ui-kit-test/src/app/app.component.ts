@@ -1,5 +1,11 @@
-import { Component } from '@angular/core';
-import { Link, TableCategory, TableItem } from 'ui-kit-lib';
+import { Component, Type, ViewContainerRef } from '@angular/core';
+import {
+  Link,
+  ModalInstance,
+  TableCategory,
+  TableItem,
+  ModalService,
+} from 'ui-kit-lib';
 import {
   faFolder,
   faLemon,
@@ -12,6 +18,7 @@ import {
   faUser,
   faWindowMaximize,
 } from '@fortawesome/free-regular-svg-icons';
+import { SampleComponent } from './sample/sample.component';
 
 @Component({
   selector: 'app-root',
@@ -19,10 +26,38 @@ import {
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'ui-kit-test';
+  modalRef: ModalInstance | null = null;
 
-  onItemClick(item: any) {
+  constructor(
+    private modalService: ModalService,
+    private viewContainerRef: ViewContainerRef
+  ) {}
+
+  private openModal() {
+    this.modalRef = this.modalService.open(
+      this.viewContainerRef,
+      SampleComponent as Type<Component>,
+      {
+        applyButton: 'Сохранить',
+        cancelButton: 'Отмена',
+      }
+    );
+
+    Object.entries(this.modalRef.event).forEach(([name, event]) => {
+      event.subscribe(() => console.log(name));
+    });
+  }
+
+  onItemClick(item: TableItem) {
     console.log(item);
+  }
+
+  modalToggle() {
+    if (this.modalRef && this.modalRef.isValid) {
+      this.modalRef.close();
+    } else {
+      this.openModal();
+    }
   }
 
   links = LINKS;

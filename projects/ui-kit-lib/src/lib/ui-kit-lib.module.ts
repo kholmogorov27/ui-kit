@@ -8,6 +8,7 @@ import { TableComponent } from './table/table.component';
 import { ButtonComponent } from './button/button.component';
 import { FormsModule } from '@angular/forms';
 import { PopUpComponent } from './table/pop-up/pop-up.component';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -16,8 +17,9 @@ import { PopUpComponent } from './table/pop-up/pop-up.component';
     TableComponent,
     ButtonComponent,
     PopUpComponent,
+    ModalComponent,
   ],
   imports: [BrowserModule, RouterModule, FontAwesomeModule, FormsModule],
-  exports: [UiKitLibComponent, NavbarComponent, TableComponent],
+  exports: [NavbarComponent, TableComponent],
 })
 export class UiKitLibModule {}

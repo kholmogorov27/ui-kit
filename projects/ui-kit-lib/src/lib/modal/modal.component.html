@@ -1,0 +1,11 @@
+<div class="overlay" (click)="closeModal($event)">
+  <div class="window">
+    <div class="buttons-bar">
+      <button (click)="onCancel()">{{ cancelButton }}</button>
+      <button class="highlight" (click)="onApply()">{{ applyButton }}</button>
+    </div>
+    <div class="content">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

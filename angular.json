@@ -45,29 +45,34 @@
         }
       }
     },
-    "ui-kit-test": {
+    "main": {
       "projectType": "application",
-      "schematics": {},
-      "root": "projects/ui-kit-test",
-      "sourceRoot": "projects/ui-kit-test/src",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/main",
+      "sourceRoot": "projects/main/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ui-kit-test",
-            "index": "projects/ui-kit-test/src/index.html",
-            "main": "projects/ui-kit-test/src/main.ts",
+            "outputPath": "dist/main",
+            "index": "projects/main/src/index.html",
+            "main": "projects/main/src/main.ts",
             "polyfills": [
               "zone.js"
             ],
-            "tsConfig": "projects/ui-kit-test/tsconfig.app.json",
+            "tsConfig": "projects/main/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
             "assets": [
-              "projects/ui-kit-test/src/favicon.ico",
-              "projects/ui-kit-test/src/assets"
+              "projects/main/src/favicon.ico",
+              "projects/main/src/assets"
             ],
             "styles": [
-              "projects/ui-kit-test/src/styles.css"
+              "projects/main/src/styles.scss"
             ],
             "scripts": []
           },
@@ -102,10 +107,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "ui-kit-test:build:production"
+              "browserTarget": "main:build:production"
             },
             "development": {
-              "browserTarget": "ui-kit-test:build:development"
+              "browserTarget": "main:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -113,7 +118,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ui-kit-test:build"
+            "browserTarget": "main:build"
           }
         },
         "test": {
@@ -123,13 +128,14 @@
               "zone.js",
               "zone.js/testing"
             ],
-            "tsConfig": "projects/ui-kit-test/tsconfig.spec.json",
+            "tsConfig": "projects/main/tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
             "assets": [
-              "projects/ui-kit-test/src/favicon.ico",
-              "projects/ui-kit-test/src/assets"
+              "projects/main/src/favicon.ico",
+              "projects/main/src/assets"
             ],
             "styles": [
-              "projects/ui-kit-test/src/styles.css"
+              "projects/main/src/styles.scss"
             ],
             "scripts": []
           }
@@ -138,8 +144,8 @@
           "builder": "@angular-eslint/builder:lint",
           "options": {
             "lintFilePatterns": [
-              "projects/ui-kit-test/**/*.ts",
-              "projects/ui-kit-test/**/*.html"
+              "projects/main/**/*.ts",
+              "projects/main/**/*.html"
             ]
           }
         }

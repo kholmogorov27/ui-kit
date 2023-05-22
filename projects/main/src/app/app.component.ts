@@ -27,7 +27,7 @@ export class AppComponent {
     },
     {
       name: 'Пользователи',
-      path: 'users',
+      path: 'clients',
       icon: faUser,
     },
     {

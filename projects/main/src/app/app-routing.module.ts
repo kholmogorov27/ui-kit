@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductsComponent } from './products/products.component';
-import { ClientsModule } from './clients/clients.module';
 import { CategoriesComponent } from './categories/categories.component';
 import { CitiesComponent } from './cities/cities.component';
 import { BrandsComponent } from './brands/brands.component';
@@ -12,6 +11,7 @@ import { SeminarsComponent } from './seminars/seminars.component';
 import { PromocodeComponent } from './promocode/promocode.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { ClientsComponent } from './clients/clients.component';
 
 const routes: Routes = [
   {
@@ -20,7 +20,7 @@ const routes: Routes = [
   },
   {
     path: 'clients',
-    component: ClientsModule,
+    component: ClientsComponent,
   },
   {
     path: 'categories',

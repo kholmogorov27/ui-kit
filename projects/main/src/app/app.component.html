@@ -1,1 +1,9 @@
-<lib-navbar [links]="paths"></lib-navbar>
+<div class="app-container">
+  <lib-navbar [links]="paths"></lib-navbar>
+  <div class="window-container">
+    <app-notify-admin></app-notify-admin>
+    <div class="window">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

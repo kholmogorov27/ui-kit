@@ -20,6 +20,6 @@ import { ModalComponent } from './modal/modal.component';
     ModalComponent,
   ],
   imports: [BrowserModule, RouterModule, FontAwesomeModule, FormsModule],
-  exports: [NavbarComponent, TableComponent],
+  exports: [NavbarComponent, TableComponent, ButtonComponent],
 })
 export class UiKitLibModule {}

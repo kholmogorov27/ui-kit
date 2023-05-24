@@ -9,8 +9,8 @@ import { OrdersComponent } from './orders/orders.component';
 import { BannersComponent } from './banners/banners.component';
 import { SeminarsComponent } from './seminars/seminars.component';
 import { PromocodeComponent } from './promocode/promocode.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
 import { ClientsComponent } from './clients/clients.component';
 
 const routes: Routes = [
@@ -61,6 +61,11 @@ const routes: Routes = [
   {
     path: 'auth/register',
     component: RegisterComponent,
+  },
+  {
+    path: 'auth',
+    pathMatch: 'full',
+    redirectTo: 'auth/login',
   },
 ];
 

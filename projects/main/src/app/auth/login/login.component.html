@@ -1,0 +1,32 @@
+<div class="container">
+  <h1>Вход в учётную запись</h1>
+  <form action="">
+    <div class="input-field">
+      <label>
+        E-mail
+        <input type="text" placeholder="Введите свой e-mail" />
+      </label>
+    </div>
+    <app-input-password class="input-field"></app-input-password>
+    <div class="input-field">
+      <label [style]="{ 'flex-wrap': 'nowrap', 'align-items': 'center' }">
+        <input type="checkbox" />
+        Запомнить меня
+      </label>
+    </div>
+  </form>
+  <div [style]="{ width: '100%', 'text-align': 'center' }">
+    <button>Войти</button>
+    <a
+      routerLink="/auth/register"
+      [style]="{
+        'font-weight': 500,
+        'font-size': '16px',
+        'margin-top': '10px',
+        display: 'inline-block',
+        cursor: 'pointer'
+      }"
+      >У меня еще нет аккаунта</a
+    >
+  </div>
+</div>

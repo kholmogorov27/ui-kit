@@ -1,0 +1,31 @@
+<div class="container">
+  <h1>Создание учетной записи</h1>
+  <form action="">
+    <div class="input-field">
+      <label>
+        E-mail
+        <input type="text" placeholder="Введите свой e-mail" />
+      </label>
+    </div>
+    <app-input-password class="input-field"></app-input-password>
+    <app-input-password
+      label="Повторите пароль"
+      placeholder="Повторите пароль"
+      class="input-field"
+    ></app-input-password>
+  </form>
+  <div [style]="{ width: '100%', 'text-align': 'center' }">
+    <button>Регистрация</button>
+    <a
+      routerLink="/auth/login"
+      [style]="{
+        'font-weight': 500,
+        'font-size': '16px',
+        'margin-top': '10px',
+        display: 'inline-block',
+        cursor: 'pointer'
+      }"
+      >У меня уже есть аккаунт</a
+    >
+  </div>
+</div>

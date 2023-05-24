@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import {
   faFolder,
@@ -71,4 +72,19 @@ export class AppComponent {
       icon: faMoneyBill1,
     },
   ];
+
+  constructor(private router: Router) {}
+
+  get isPureLayout() {
+    let path = this.router.url;
+    const questionMarkIndex = path.indexOf('?');
+
+    if (questionMarkIndex > -1) {
+      path = path.slice(0, questionMarkIndex);
+    }
+
+    return pureLayoutPaths.includes(path.split('/')[1]);
+  }
 }
+
+const pureLayoutPaths = ['auth'];

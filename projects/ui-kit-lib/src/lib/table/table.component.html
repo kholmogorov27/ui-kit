@@ -1,53 +1,75 @@
 <div class="container">
   <ng-container *ngTemplateOutlet="navigation"></ng-container>
 
-  <lib-button (press)="onAddItem()">Добавить акцию</lib-button>
+  <lib-button *ngIf="addButton" (press)="onAddItem()"
+    >Добавить акцию</lib-button
+  >
 
   <div
     class="table-container"
     [ngStyle]="{
-      '--columnsAmount': sortedCategories.length,
-      '--rowsAmount': itemsOnPage.length + 1
+      '--columnsAmount': columnsAmount,
+      '--rowsAmount': rowsAmount,
+      '--beforeColumn': checkboxes ? 'min-content' : ''
     }"
   >
+    <!-- Header checkbox -->
     <div
-      class="cell header"
-      [class.checkbox]="isFirst"
-      [ngStyle]="{ '--aligment': category.aligment }"
-      *ngFor="let category of sortedCategories; first as isFirst"
+      class="cell header checkbox"
+      *ngIf="checkboxes"
+      [ngStyle]="{ '--aligment': 'center' }"
     >
       <span class="cell-content">
         <ng-container
-          [ngTemplateOutlet]="!isFirst ? text : checkbox"
-          [ngTemplateOutletContext]="
-            !isFirst
-              ? { content: category.name }
-              : {
-                  checked: isAnythingOnPageSelected,
-                  change: toggleAllCheckboxOnPage
-                }
-          "
+          [ngTemplateOutlet]="checkbox"
+          [ngTemplateOutletContext]="{
+            checked: isAnythingOnPageSelected,
+            change: toggleAllCheckboxOnPage
+          }"
         ></ng-container>
       </span>
     </div>
+
+    <!-- Categories -->
+    <div
+      class="cell header"
+      [ngStyle]="{ '--aligment': category.aligment }"
+      *ngFor="let category of sortedCategories"
+    >
+      <span class="cell-content"> {{ category.name }} </span>
+    </div>
+
     <ng-container *ngFor="let item of itemsOnPage; let index = index">
+      <!-- Row checkbox -->
       <div
-        class="cell clickable"
-        [class.checkbox]="isFirst"
-        [ngStyle]="{ '--aligment': category.aligment }"
-        [tabindex]="isFirst ? 0 : -1"
+        class="cell clickable checkbox"
+        tabindex="0"
+        *ngIf="checkboxes"
         (click)="onItemClick($event, item, index)"
         (keydown)="onItemClick($event, item, index)"
-        *ngFor="let category of sortedCategories; first as isFirst"
+        [ngStyle]="{ '--aligment': 'center' }"
       >
         <span class="cell-content">
           <ng-container
-            [ngTemplateOutlet]="!isFirst ? text : checkbox"
-            [ngTemplateOutletContext]="!isFirst 
-              ? {content: item?.[category.key]} 
-              : {index: index, checked: isItemChecked(index), change: toggleCheckbox}"
+            [ngTemplateOutlet]="checkbox"
+            [ngTemplateOutletContext]="{
+              index: index,
+              checked: isItemChecked(index),
+              change: toggleCheckbox
+            }"
           ></ng-container>
         </span>
+      </div>
+
+      <div
+        class="cell clickable"
+        tabindex="-1"
+        [ngStyle]="{ '--aligment': category.aligment }"
+        (click)="onItemClick($event, item, index)"
+        (keydown)="onItemClick($event, item, index)"
+        *ngFor="let category of sortedCategories"
+      >
+        <span class="cell-content"> {{ item?.[category.key] }} </span>
       </div>
     </ng-container>
   </div>
@@ -72,6 +94,12 @@
   </lib-pop-up>
 </div>
 
+<div *ngIf="itemsOnPage.length === 0" class="empty-placeholder">
+  {{ emptyPlaceholder }}
+</div>
+
+<!-- templates -->
+
 <ng-template
   #checkbox
   let-index="index"
@@ -83,9 +111,6 @@
     [checked]="checked"
     (change)="change.call(this, checked, index)"
   />
-</ng-template>
-<ng-template #text let-content="content">
-  {{ content }}
 </ng-template>
 
 <ng-template #navigation>

@@ -20,11 +20,14 @@ import { faTrashAlt } from '@fortawesome/free-regular-svg-icons';
   styleUrls: ['./table.component.css'],
 })
 export class TableComponent implements OnChanges {
-  @Output() itemClick = new EventEmitter();
-  @Output() itemAdd = new EventEmitter();
-
   @Input() categories: TableCategory[] = [];
   @Input() items: TableItem[] = [];
+  @Input() addButton = true;
+  @Input() checkboxes = true;
+  @Input() emptyPlaceholder = 'Здесь ничего нет';
+
+  @Output() itemClick = new EventEmitter();
+  @Output() itemAdd = new EventEmitter();
 
   ngOnChanges(changes: SimpleChanges): void {
     if ('categories' in changes) {
@@ -57,11 +60,17 @@ export class TableComponent implements OnChanges {
   get pagesAmount(): number {
     return Math.ceil(this.items.length / this.perPage);
   }
+  get columnsAmount(): number {
+    return this.sortedCategories.length;
+  }
+  get rowsAmount(): number {
+    return this.itemsOnPage.length + 1;
+  }
   get getSelectedAmount(): number {
     return this.selected.length;
   }
   get isFirstPage(): boolean {
-    return this.currentPage === 1;
+    return this.currentPage <= 1;
   }
   get isLastPage(): boolean {
     return this.perPage >= this.items.length - this.itemsOffset;

@@ -14,7 +14,7 @@
 
 .table-container {
   display: grid;
-  grid-template-columns: repeat(var(--columnsAmount), auto);
+  grid-template-columns: var(--beforeColumn) repeat(var(--columnsAmount), auto);
   grid-template-rows: repeat(var(--rowsAmount), 68px);
   overflow: auto;
 
@@ -27,6 +27,7 @@
   --columnsAmount: 6;
   --rowsAmount: 10;
   --aligment: "left";
+  --beforeColumn: "";
 }
 
 .cell {
@@ -93,11 +94,16 @@ button.small {
   gap: 8px;
   border: 1px solid #d0d3da;
   border-radius: 4px;
-  color: #737680;
-  cursor: pointer;
+  background: #ffffff;
+  color: #414348;
 
   height: 32px;
   aspect-ratio: 1;
+}
+button.small.disabled {
+  background: #f8f8fa;
+  color: #737680;
+  cursor: default;
 }
 
 .navigation {
@@ -142,6 +148,10 @@ select {
   -webkit-appearance: none;
 }
 
+.navigation + .table-container {
+  margin-top: 25px;
+}
+
 .property > .description {
   margin-right: 8px;
 }
@@ -157,4 +167,9 @@ select {
 
 .clickable {
   cursor: pointer;
+}
+
+.empty-placeholder {
+  margin: 24px 0;
+  text-align: center;
 }

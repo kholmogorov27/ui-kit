@@ -6,7 +6,6 @@
   height: 40px;
   background: #ebecef;
   border-radius: 4px;
-  transition: all 0.3s, transform 0.1s;
 }
 
 .container {
@@ -20,6 +19,7 @@
   padding: 0;
   padding-right: 3px;
   outline-offset: 5px;
+  color: #000000;
 }
 
 .container:hover .icon,

@@ -6,19 +6,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UiKitLibModule } from 'ui-kit-lib';
 import { NotifyAdminComponent } from './notify-admin/notify-admin.component';
-import { InputPasswordComponent } from './input-password/input-password.component';
-import { LoginComponent } from './auth/login/login.component';
-import { RegisterComponent } from './auth/register/register.component';
+import { ProductsModule } from './products/products.module';
+import { LoginModule } from './auth/login/login.module';
+import { RegisterModule } from './auth/register/register.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NotifyAdminComponent,
-    InputPasswordComponent,
-    LoginComponent,
-    RegisterComponent,
+  declarations: [AppComponent, NotifyAdminComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    UiKitLibModule,
+    FontAwesomeModule,
+    ProductsModule,
+    LoginModule,
+    RegisterModule,
   ],
-  imports: [BrowserModule, AppRoutingModule, UiKitLibModule, FontAwesomeModule],
   providers: [],
   bootstrap: [AppComponent],
 })

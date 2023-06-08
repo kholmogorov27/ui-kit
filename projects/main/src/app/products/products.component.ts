@@ -108,10 +108,22 @@ export class ProductsComponent {
       }
     );
 
-    instance.event.cancel.subscribe(() => console.log(this.form?.value));
+    instance.event.cancel.subscribe(() => {
+      if (this.form) {
+        if (this.form?.valid) {
+          this.updateItemFromModal(item, this.form.value);
+        }
+      }
+    });
     instance.event.apply.subscribe(() => {
-      this.form && this.updateItemFromModal(item, this.form.value);
-      instance.close();
+      if (this.form) {
+        if (this.form?.valid) {
+          this.updateItemFromModal(item, this.form.value);
+          instance.close();
+        }
+      } else {
+        instance.close();
+      }
     });
   }
 }

@@ -1,0 +1,21 @@
+<button
+  class="container"
+  [class.opened]="isOpened"
+  [class.disabled]="disabled"
+  (click)="toggle($event)"
+  (blur)="onBlur($event)"
+>
+  <div class="selector">
+    <span> {{ selected || placeholder }} </span>
+    <fa-icon [icon]="icon" [class]="icon"></fa-icon>
+  </div>
+  <div *ngIf="isOpened" class="dropdown">
+    <button
+      *ngFor="let option of options"
+      (click)="chooseOption(option)"
+      [class.active]="option === selected"
+    >
+      {{ option }}
+    </button>
+  </div>
+</button>

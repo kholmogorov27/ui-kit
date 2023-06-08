@@ -15,7 +15,6 @@ import { faEye, faEyeSlash } from '@fortawesome/free-regular-svg-icons';
   ],
 })
 export class InputPasswordComponent implements ControlValueAccessor {
-  @Input() formControlName = '';
   @Input() label = 'Пароль';
   @Input() placeholder = 'Введите пароль';
   @Input() isVisible = false;

@@ -1,0 +1,27 @@
+<div class="picture" *ngFor="let image of images">
+  <div class="thumbnail">
+    <fa-icon [icon]="trashIcon"></fa-icon>
+  </div>
+  <span class="name">
+    {{ image }}
+  </span>
+  <lib-button-icon (press)="removeImage(image)"></lib-button-icon>
+</div>
+<div class="link" *ngIf="!isLimitExceeded">
+  <input #input type="text" placeholder="Вставте ссылку на Google Drive" />
+  <lib-button-icon
+    (press)="addImage(input.value); input.value = ''"
+    [icon]="linkIcon"
+    color="#c06ecc"
+    [style]="{
+      position: 'absolute',
+      right: 0,
+    }"
+  ></lib-button-icon>
+</div>
+<span class="description" *ngIf="limit > -1">
+  Максимум {{ limit }} изображений
+</span>
+<span class="description" *ngIf="description">
+  {{ description }}
+</span>

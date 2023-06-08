@@ -44,6 +44,7 @@
   background-color: #ffffff;
   border: 1px solid #d0d3da;
   color: #37393d;
+  white-space: pre;
   cursor: pointer;
 }
 

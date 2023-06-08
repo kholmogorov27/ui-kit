@@ -1,0 +1,19 @@
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
+<div class="item" *ngFor="let item of items">
+  <input
+    (change)="changeProp(item, field.key, $event)"
+    class="property"
+    type="text"
+    *ngFor="let field of fields"
+    [placeholder]="field.placeholder"
+    [value]="item[field.key]"
+    [class.empty]="item[field.key] === ''"
+  />
+  <lib-button-icon (press)="removeItem(item)"></lib-button-icon>
+</div>
+<div class="limit-warning" *ngIf="limit > -1">
+  {{ limitTextTemplate(limit) }}
+</div>
+<a *ngIf="!isLimitExceeded" (click)="addItem()" class="add-new" tabindex="0"
+  >+ {{ addNewText }}</a
+>

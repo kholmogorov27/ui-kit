@@ -1,0 +1,56 @@
+:host {
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: stretch;
+  padding: 8px 12px;
+  gap: 8px;
+  border: 1px solid #d0d3da;
+  border-radius: 8px;
+}
+
+.tag {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+  justify-items: center;
+  background: #f7ecf8;
+  border-radius: 4px;
+  padding: 6px 12px;
+  white-space: pre;
+  font-weight: 400;
+  font-size: 13px;
+  width: unset;
+  color: #000000;
+  border: none;
+}
+
+.tag > button {
+  width: unset;
+  padding: 2px;
+  color: #000000;
+  background-color: unset;
+  border: none;
+  outline-offset: 2px;
+}
+
+.name {
+  outline: none;
+}
+
+.limit-warning {
+  font-weight: 400;
+  font-size: 12px;
+  color: #737680;
+  margin-top: 4px;
+}
+
+.empty-warning {
+  font-weight: 400;
+  font-size: 12px;
+  color: #737680;
+}

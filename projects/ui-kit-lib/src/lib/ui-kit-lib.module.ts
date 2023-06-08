@@ -1,3 +1,4 @@
+import { SelectComponent } from './select/select.component';
 import { NgModule } from '@angular/core';
 import { UiKitLibComponent } from './ui-kit-lib.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -10,6 +11,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PopUpComponent } from './table/pop-up/pop-up.component';
 import { ModalComponent } from './modal/modal.component';
 import { InputPasswordComponent } from './input-password/input-password.component';
+import { InputImageComponent } from './input-image/input-image.component';
+import { InputPropListComponent } from './input-prop-list/input-prop-list.component';
+import { InputTagsComponent } from './input-tags/input-tags.component';
+import { ButtonIconComponent } from './button-icon/button-icon.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +25,11 @@ import { InputPasswordComponent } from './input-password/input-password.componen
     PopUpComponent,
     ModalComponent,
     InputPasswordComponent,
+    InputImageComponent,
+    SelectComponent,
+    InputPropListComponent,
+    InputTagsComponent,
+    ButtonIconComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +43,11 @@ import { InputPasswordComponent } from './input-password/input-password.componen
     TableComponent,
     ButtonComponent,
     InputPasswordComponent,
+    InputImageComponent,
+    SelectComponent,
+    InputPropListComponent,
+    InputTagsComponent,
+    ButtonIconComponent,
   ],
 })
 export class UiKitLibModule {}

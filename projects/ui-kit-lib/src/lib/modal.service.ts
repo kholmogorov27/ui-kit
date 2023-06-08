@@ -1,6 +1,5 @@
 import { ModalComponent } from './modal/modal.component';
 import {
-  Component,
   ComponentRef,
   EmbeddedViewRef,
   Injectable,
@@ -14,40 +13,40 @@ import { ModalOptions } from './types';
   providedIn: 'root',
 })
 export class ModalService {
-  modalRefs: ModalInstance[] = [];
+  modalRefs: ModalInstance<ModalComponent, unknown>[] = [];
 
-  private createComponent(
+  private createComponent<T, C>(
     viewContainerRef: ViewContainerRef,
-    component: Type<Component>,
-    children?: ComponentRef<Component>
-  ): ComponentRef<Component> {
+    component: Type<T>,
+    children?: ComponentRef<C>
+  ): ComponentRef<T> {
     const options = children
       ? {
-          projectableNodes: [[this.getHTMLNode(children) as Node]],
+          projectableNodes: [[this.getHTMLNode(children)]],
         }
       : undefined;
 
-    return viewContainerRef.createComponent<Component>(component, options);
+    return viewContainerRef.createComponent<T>(component, options);
   }
 
-  private getHTMLNode(componentRef: ComponentRef<Component>): HTMLElement {
-    return (componentRef.hostView as EmbeddedViewRef<unknown>)
+  private getHTMLNode<T>(componentRef: ComponentRef<T>): HTMLElement {
+    return (componentRef.hostView as EmbeddedViewRef<T>)
       .rootNodes[0] as HTMLElement;
   }
 
-  open(
+  open<T>(
     viewContainerRef: ViewContainerRef,
-    content: Type<Component>,
+    content: Type<T>,
     options?: ModalOptions
-  ): ModalInstance {
-    const contentRef = this.createComponent(viewContainerRef, content);
-    const modalRef = this.createComponent(
+  ): ModalInstance<ModalComponent, T> {
+    const contentRef = this.createComponent<T, null>(viewContainerRef, content);
+    const modalRef = this.createComponent<ModalComponent, T>(
       viewContainerRef,
-      ModalComponent as Type<Component>,
+      ModalComponent,
       contentRef
     );
 
-    const instance = new ModalInstance(modalRef, options);
+    const instance = new ModalInstance(modalRef, contentRef, options);
     this.modalRefs.push(instance);
 
     instance.event.close.subscribe(() => {

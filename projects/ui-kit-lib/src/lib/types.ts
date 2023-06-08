@@ -14,12 +14,16 @@ export type TableCategory = {
 };
 
 export type TableItem = {
-  [key: string]: string;
+  [key: string]: unknown;
 };
 
 export type ModalOptions = {
-  applyButton?: string;
-  cancelButton?: string;
+  inputs?: { [key: string]: unknown };
+  outputs?: { [key: string]: (...args: any[]) => unknown };
   closeOnEscape?: boolean;
   closeOnClickAway?: boolean;
+  applyButton?: string;
+  cancelButton?: string;
+  onApply?: () => void;
+  onCancel?: () => void;
 };

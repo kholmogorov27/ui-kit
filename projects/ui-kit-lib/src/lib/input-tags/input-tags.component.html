@@ -1,0 +1,27 @@
+<div class="container" (click)="onContentClick($event)">
+  <div *ngFor="let tag of tags" class="tag">
+    <span
+      #name
+      contenteditable
+      class="name"
+      (blur)="editTag(tag, name.innerText)"
+      [attr.autofocus]="tag === ''"
+      >{{ tag }}</span
+    >
+    <button (click)="removeTag(tag)">
+      <fa-icon
+        [icon]="iconCross"
+        [style]="{
+          display: 'flex',
+          'align-items': 'center',
+          'justify-items': 'center',
+          'font-size': '10px',
+        }"
+      ></fa-icon>
+    </button>
+  </div>
+  <div *ngIf="tags.length === 0" class="empty-warning">Тэгов нет</div>
+</div>
+<div class="limit-warning" *ngIf="limit > -1">
+  {{ limitTextTemplate(limit) }}
+</div>

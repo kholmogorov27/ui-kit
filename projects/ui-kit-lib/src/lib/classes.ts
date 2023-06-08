@@ -1,15 +1,16 @@
 import { ModalComponent } from './modal/modal.component';
-import { Component, ComponentRef } from '@angular/core';
-import { Subject } from 'rxjs';
+import { ComponentRef } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 import { ModalOptions } from './types';
 
-export class ModalInstance {
+export class ModalInstance<T, C> {
   private keyboardCallbackRef: ((event: KeyboardEvent) => void) | null = null;
   private closeOnEscape = true;
   private closeOnClickAway = true;
 
   isValid = true;
-  componentRef;
+  containerRef;
+  contentRef;
 
   event = {
     close: new Subject<void>(),
@@ -17,15 +18,39 @@ export class ModalInstance {
     cancel: new Subject<void>(),
   };
 
-  constructor(componentRef: ComponentRef<Component>, options?: ModalOptions) {
-    this.componentRef = componentRef;
+  constructor(
+    containerRef: ComponentRef<T>,
+    contentRef: ComponentRef<C>,
+    options?: ModalOptions
+  ) {
+    this.containerRef = containerRef;
+    this.contentRef = contentRef;
+
+    if (options?.inputs) {
+      Object.entries(options.inputs).forEach(([name, value]) =>
+        this.contentRef.setInput(name, value)
+      );
+    }
+    if (options?.outputs) {
+      Object.entries(options.outputs).forEach(([name, value]) => {
+        if (
+          Object.prototype.hasOwnProperty.call(this.contentRef.instance, name)
+        ) {
+          (
+            (this.contentRef.instance as { [key: string]: unknown })[
+              name
+            ] as Observable<unknown>
+          ).subscribe(value);
+        }
+      });
+    }
 
     if (options?.applyButton) {
-      (this.componentRef.instance as ModalComponent).applyButton =
+      (this.containerRef.instance as ModalComponent).applyButton =
         options.applyButton;
     }
     if (options?.cancelButton) {
-      (this.componentRef.instance as ModalComponent).cancelButton =
+      (this.containerRef.instance as ModalComponent).cancelButton =
         options.cancelButton;
     }
     if (options?.closeOnEscape) {
@@ -40,7 +65,7 @@ export class ModalInstance {
   }
 
   private bindInstanceEvents(): void {
-    const instance = this.componentRef.instance as ModalComponent;
+    const instance = this.containerRef.instance as ModalComponent;
 
     instance.modalClose.subscribe(() => {
       this.closeOnClickAway && this.event.close.next();
@@ -73,7 +98,7 @@ export class ModalInstance {
 
   private _close(): void {
     this.isValid = false;
-    this.componentRef.destroy();
+    this.containerRef.destroy();
   }
 
   close(): void {

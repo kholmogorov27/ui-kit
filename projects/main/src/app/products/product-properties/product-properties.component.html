@@ -1,0 +1,86 @@
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
+<!-- eslint-disable @angular-eslint/template/label-has-associated-control -->
+<form [formGroup]="form">
+  <div class="block">
+    <div class="input-field">
+      Название 1C
+      <input type="text" placeholder="" formControlName="nameFrom1C" />
+    </div>
+    <div class="input-field">
+      Название*
+      <input type="text" placeholder="" formControlName="name" />
+    </div>
+    <div class="input-field">
+      Бренд*
+      <lib-select
+        formControlName="brand"
+        placeholder="Выберите бренд"
+      ></lib-select>
+    </div>
+    <div class="input-field">
+      Артикул
+      <input type="text" placeholder="" formControlName="codeFrom1C" />
+    </div>
+    <div class="input-field">
+      Описание*
+      <textarea
+        type="text"
+        placeholder="Опишите товар"
+        formControlName="description"
+      >
+      </textarea>
+    </div>
+  </div>
+  <div class="block">
+    <div class="input-field">
+      Изображения*
+      <lib-input-image formControlName="images"></lib-input-image>
+    </div>
+  </div>
+  <div class="block">
+    <div class="input-field">
+      Цена
+      <input type="text" placeholder="" formControlName="price" />
+    </div>
+  </div>
+  <div class="block" [style]="{ 'flex-wrap': 'nowrap' }">
+    <div class="input-field">
+      Категория*
+      <lib-select
+        formControlName="catalog_product"
+        placeholder="Выберите категорию"
+      ></lib-select>
+    </div>
+    <div class="input-field">
+      Подкатегория*
+      <lib-select
+        formControlName="sub_catalog_product"
+        placeholder="Выберите подкатегорию"
+      ></lib-select>
+    </div>
+  </div>
+  <div class="block">
+    <div class="input-field">
+      Объем*
+      <lib-input-prop-list
+        addNewText="Добавить объем"
+        formControlName="volume"
+      ></lib-input-prop-list>
+    </div>
+  </div>
+  <div class="block">
+    <div class="input-field">
+      Характеристики
+      <lib-input-prop-list
+        addNewText="Добавить характеристику"
+        formControlName="characteristics"
+      ></lib-input-prop-list>
+    </div>
+  </div>
+  <div class="block">
+    <div class="input-field">
+      Тэги товаров
+      <lib-input-tags formControlName="tags"></lib-input-tags>
+    </div>
+  </div>
+</form>

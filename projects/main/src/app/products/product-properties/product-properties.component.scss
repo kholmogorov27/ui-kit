@@ -1,0 +1,25 @@
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+
+textarea {
+  height: 100px;
+}
+
+.block {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+}
+
+.input-field {
+  width: 100%;
+}
+
+input.ng-invalid,
+textarea.ng-invalid {
+  outline: 2px solid red;
+}

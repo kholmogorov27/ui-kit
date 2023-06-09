@@ -86,6 +86,7 @@ export class ProductPropertiesComponent implements OnInit, OnChanges {
         },
         { validators: [Validators.required] },
       ],
+      /*
       volume: [
         {
           value: [
@@ -108,6 +109,7 @@ export class ProductPropertiesComponent implements OnInit, OnChanges {
         },
         { validators: [requireProps] },
       ],
+      */
       characteristics: {
         fields: [
           {

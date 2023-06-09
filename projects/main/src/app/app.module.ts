@@ -1,6 +1,7 @@
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,10 +10,12 @@ import { NotifyAdminComponent } from './notify-admin/notify-admin.component';
 import { ProductsModule } from './products/products.module';
 import { LoginModule } from './auth/login/login.module';
 import { RegisterModule } from './auth/register/register.module';
+import { MockInterceptor } from './main-interceptor.service';
 
 @NgModule({
   declarations: [AppComponent, NotifyAdminComponent],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     UiKitLibModule,
@@ -21,7 +24,13 @@ import { RegisterModule } from './auth/register/register.module';
     LoginModule,
     RegisterModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MockInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

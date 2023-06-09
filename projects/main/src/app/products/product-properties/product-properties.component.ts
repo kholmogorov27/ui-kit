@@ -97,30 +97,6 @@ export class ProductPropertiesComponent implements OnInit, OnChanges {
         },
         { validators: [Validators.required] },
       ],
-      /*
-      volume: [
-        {
-          value: [
-            {
-              value: this.item && this.item.volume ? this.item.volume : '',
-              codeFrom1C: this.item ? this.item.codeFrom1C : '',
-            },
-            { value: '', codeFrom1C: '' },
-          ],
-          fields: [
-            {
-              key: 'value',
-              placeholder: 'Значение',
-            },
-            {
-              key: 'codeFrom1C',
-              placeholder: 'Артикул',
-            },
-          ],
-        },
-        { validators: [requireProps] },
-      ],
-      */
       characteristics: {
         fields: [
           {

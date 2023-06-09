@@ -3,12 +3,14 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  OnInit,
   ViewContainerRef,
 } from '@angular/core';
 import { TableCategory, TableItem } from 'ui-kit-lib';
 import { ProductPropertiesComponent } from './product-properties/product-properties.component';
 import { FormGroup } from '@angular/forms';
 import { Brand, Category, Product, SubCategory } from '../../types';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-products',
@@ -16,16 +18,23 @@ import { Brand, Category, Product, SubCategory } from '../../types';
   styleUrls: ['./products.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductsComponent {
+export class ProductsComponent implements OnInit {
   categories: TableCategory[] = MOCK.categories;
-  items: TableItem[] = MOCK.items;
+  items: TableItem[] | null = null;
   form: FormGroup | null = null;
 
   constructor(
     private modalService: ModalService,
     private viewContainerRef: ViewContainerRef,
-    private changeDetectionRef: ChangeDetectorRef
+    private changeDetectionRef: ChangeDetectorRef,
+    private http: HttpClient
   ) {}
+
+  ngOnInit(): void {
+    this.http.get('products').subscribe((response) => {
+      this.items = response as TableItem[];
+    });
+  }
 
   private updateItemFromModal(item: TableItem, newState: TableItem) {
     console.log(newState);

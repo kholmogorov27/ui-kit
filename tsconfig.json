@@ -22,7 +22,11 @@
     "paths": {
       "ui-kit-lib": ["dist/ui-kit-lib"]
     },
-    "lib": ["ES2022", "dom"]
+    "lib": ["ES2022", "dom"],
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strictPropertyInitialization": false
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

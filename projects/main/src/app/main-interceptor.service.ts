@@ -12,7 +12,7 @@ import { MockService } from './mock.service';
 @Injectable({
   providedIn: 'root',
 })
-export class MainInterceptorService implements HttpInterceptor {
+export class MockInterceptor implements HttpInterceptor {
   constructor(private mock: MockService) {}
 
   intercept(

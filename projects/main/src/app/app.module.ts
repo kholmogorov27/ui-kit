@@ -10,7 +10,7 @@ import { NotifyAdminComponent } from './notify-admin/notify-admin.component';
 import { ProductsModule } from './products/products.module';
 import { LoginModule } from './auth/login/login.module';
 import { RegisterModule } from './auth/register/register.module';
-import { MainInterceptorService } from './main-interceptor.service';
+import { MockInterceptor } from './main-interceptor.service';
 
 @NgModule({
   declarations: [AppComponent, NotifyAdminComponent],
@@ -27,7 +27,7 @@ import { MainInterceptorService } from './main-interceptor.service';
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: MainInterceptorService,
+      useClass: MockInterceptor,
       multi: true,
     },
   ],

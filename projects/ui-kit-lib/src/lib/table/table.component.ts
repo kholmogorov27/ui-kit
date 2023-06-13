@@ -112,6 +112,9 @@ export class TableComponent implements OnChanges {
     if (this.currentPage > this.pagesAmount) {
       this.changePage(this.pagesAmount);
     }
+    if (this.currentPage === 0 && this.pagesAmount > 0) {
+      this.changePage(1);
+    }
   }
 
   onItemClick(

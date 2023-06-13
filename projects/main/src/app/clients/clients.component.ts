@@ -21,6 +21,10 @@ export class ClientsComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
+    this.fetchClients();
+  }
+
+  private fetchClients() {
     this.http.get('clients').subscribe((response) => {
       (response as TableItem[]).map((item) => {
         item['fullname'] = `${item['name'] || ''} ${item['lastName'] || ''}`;

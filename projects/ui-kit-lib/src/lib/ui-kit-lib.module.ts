@@ -50,6 +50,7 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
     InputPropListComponent,
     InputTagsComponent,
     ButtonIconComponent,
+    SearchBarComponent,
   ],
 })
 export class UiKitLibModule {}

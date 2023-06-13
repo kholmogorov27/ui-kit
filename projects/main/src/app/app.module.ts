@@ -11,6 +11,7 @@ import { ProductsModule } from './products/products.module';
 import { LoginModule } from './auth/login/login.module';
 import { RegisterModule } from './auth/register/register.module';
 import { MockInterceptor } from './main-interceptor.service';
+import { ClientsModule } from './clients/clients.module';
 
 @NgModule({
   declarations: [AppComponent, NotifyAdminComponent],
@@ -23,6 +24,7 @@ import { MockInterceptor } from './main-interceptor.service';
     ProductsModule,
     LoginModule,
     RegisterModule,
+    ClientsModule,
   ],
   providers: [
     {

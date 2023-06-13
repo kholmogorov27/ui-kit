@@ -1,8 +1,16 @@
+<lib-search-bar
+  [style]="{
+    display: 'flex',
+    'justify-content': 'flex-end',
+    'margin-bottom': '24px'
+  }"
+  (valueChange)="onSearchInput($event)"
+></lib-search-bar>
 <lib-table
   *ngIf="items"
   emptyPlaceholder="Здесь пока нет товаров"
   [addButton]="false"
   [categories]="categories"
-  [items]="items"
+  [items]="filtered"
   [checkboxes]="false"
 ></lib-table>

@@ -13,7 +13,10 @@ export class ClientsComponent implements OnInit {
     { key: 'email', name: 'Почта' },
     { key: 'phone', name: 'Телефон' },
   ];
-  items: TableItem[] | null = null;
+  items: TableItem[] = [];
+  filtered: TableItem[] = [];
+
+  filter = '';
 
   constructor(private http: HttpClient) {}
 
@@ -22,7 +25,22 @@ export class ClientsComponent implements OnInit {
       (response as TableItem[]).map((item) => {
         item['fullname'] = `${item['name'] || ''} ${item['lastName'] || ''}`;
       });
-      this.items = response as TableItem[];
+      this.setItems(response as TableItem[]);
     });
+  }
+
+  setItems(value: TableItem[]) {
+    this.items = value;
+    this.filtered = this.items;
+  }
+
+  onSearchInput(value: string) {
+    this.filter = value;
+    const filtered = this.items.filter((item) =>
+      (item['fullname'] as string).toLowerCase().includes(value)
+    );
+    if (filtered) {
+      this.filtered = filtered;
+    }
   }
 }

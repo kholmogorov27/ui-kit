@@ -20,4 +20,5 @@ const URLS: { [key: string]: string } = {
   brands: 'brands',
   categories: 'categories',
   subcategories: 'subcategories',
+  clients: 'clients',
 };

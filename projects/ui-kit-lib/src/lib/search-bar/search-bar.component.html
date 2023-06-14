@@ -1,0 +1,16 @@
+<div class="content">
+  <fa-icon
+    [icon]="searchIcon"
+    [style]="{ left: '13px', 'pointer-events': 'none' }"
+  ></fa-icon>
+  <input
+    type="text"
+    [value]="value"
+    placeholder="Поиск"
+    (input)="onInput($event)"
+  />
+  <fa-icon
+    [icon]="crossIcon"
+    [style]="{ right: '13px', cursor: 'pointer' }"
+  ></fa-icon>
+</div>

@@ -1,0 +1,22 @@
+:host {
+  color: #818590;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+input {
+  padding: 10px 36px;
+  border: 1px solid #d0d3da;
+  border-radius: 8px;
+  font-weight: 400;
+  font-size: 14px;
+  color: #737680;
+}
+
+fa-icon {
+  position: absolute;
+}

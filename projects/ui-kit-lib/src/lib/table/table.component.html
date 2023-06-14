@@ -7,10 +7,10 @@
 
   <div
     class="table-container"
+    [class.checkboxes]="checkboxes"
     [ngStyle]="{
       '--columnsAmount': columnsAmount,
-      '--rowsAmount': rowsAmount,
-      '--beforeColumn': checkboxes ? 'min-content' : ''
+      '--rowsAmount': rowsAmount
     }"
   >
     <!-- Header checkbox -->

@@ -14,7 +14,7 @@
 
 .table-container {
   display: grid;
-  grid-template-columns: var(--beforeColumn) repeat(var(--columnsAmount), auto);
+  grid-template-columns: repeat(var(--columnsAmount), auto);
   grid-template-rows: repeat(var(--rowsAmount), 68px);
   overflow: auto;
 
@@ -28,6 +28,9 @@
   --rowsAmount: 10;
   --aligment: "left";
   --beforeColumn: "";
+}
+.table-container.checkboxes {
+  grid-template-columns: min-content repeat(var(--columnsAmount), auto);
 }
 
 .cell {

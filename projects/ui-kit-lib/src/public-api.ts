@@ -14,6 +14,7 @@ export * from './lib/input-password/input-password.component';
 export * from './lib/input-image/input-image.component';
 export * from './lib/input-prop-list/input-prop-list.component';
 export * from './lib/input-tags/input-tags.component';
+export * from './lib/search-bar/search-bar.component';
 
 export * from './lib/modal.service';
 

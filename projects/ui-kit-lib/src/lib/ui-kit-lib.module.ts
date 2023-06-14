@@ -15,6 +15,7 @@ import { InputImageComponent } from './input-image/input-image.component';
 import { InputPropListComponent } from './input-prop-list/input-prop-list.component';
 import { InputTagsComponent } from './input-tags/input-tags.component';
 import { ButtonIconComponent } from './button-icon/button-icon.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ButtonIconComponent } from './button-icon/button-icon.component';
     InputPropListComponent,
     InputTagsComponent,
     ButtonIconComponent,
+    SearchBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +50,7 @@ import { ButtonIconComponent } from './button-icon/button-icon.component';
     InputPropListComponent,
     InputTagsComponent,
     ButtonIconComponent,
+    SearchBarComponent,
   ],
 })
 export class UiKitLibModule {}
